@@ -50,6 +50,33 @@ kriya-nusantara-pkwu/
    npm run preview
    ```
 
+## Setup Supabase
+
+1. Buat project di [Supabase](https://supabase.com/) dan tunggu sampai project siap.
+2. Buka **Project Settings > API** (atau **Connect**) lalu salin Project URL dan publishable/anon key.
+3. Buka **SQL Editor**, tempel seluruh isi `supabase-schema.sql`, lalu jalankan.
+4. Pastikan tabel `showcase_products` dan `showcase_reviews` tersedia, dan Storage memiliki bucket publik bernama `product-images`. Skrip SQL membuat tabel, bucket, serta policy yang dibutuhkan aplikasi.
+5. Untuk pengembangan lokal, salin `.env.example` ke `.env`, lalu isi `VITE_SUPABASE_URL` dan `VITE_SUPABASE_ANON_KEY` dengan nilai project tadi. Jangan masukkan `service_role` key ke file `.env` frontend.
+
+Skema mencakup kolom galeri `documentation` dan `infographic` bertipe `jsonb`. Jika project Supabase sudah memiliki tabel lama, jalankan skrip yang sama untuk menambahkan kolom yang belum ada.
+
+## Deploy ke Netlify
+
+Konfigurasi build sudah disimpan di `netlify.toml` (`npm run build`, direktori hasil `dist`).
+
+1. Push branch yang akan diterbitkan ke GitHub.
+2. Di Netlify, pilih **Add new site > Import an existing project**, hubungkan GitHub, lalu pilih repository dan branch.
+3. Pastikan build command `npm run build` dan publish directory `dist` (otomatis diambil dari `netlify.toml`).
+4. Sebelum deploy, buka **Site configuration > Environment variables** dan tambahkan:
+   - `VITE_SUPABASE_URL` = Project URL Supabase.
+   - `VITE_SUPABASE_ANON_KEY` = publishable/anon key Supabase.
+5. Jalankan deploy. Jika environment variable diubah setelahnya, picu deploy baru agar nilainya masuk ke build frontend.
+6. Buka URL Netlify dan uji pemuatan produk/ulasan serta unggah gambar. Pastikan URL Supabase dan bucket `product-images` benar.
+
+## Catatan Keamanan Sebelum Publikasi
+
+`VITE_*` adalah nilai publik yang disertakan ke bundle browser. Gunakan hanya publishable/anon key, tidak pernah `service_role` key. Saat ini kata sandi admin ditanam langsung dalam kode frontend dan policy pada `supabase-schema.sql` mengizinkan anon membaca serta mengubah produk, ulasan, dan gambar. Karena itu panel admin bukan autentikasi yang aman dan siapa pun dapat mengakses operasi tulis melalui API. Konfigurasi ini hanya cocok untuk demo dengan data non-sensitif. Untuk penggunaan publik, pindahkan admin ke Supabase Auth dan ubah policy RLS agar operasi tulis hanya untuk pengguna admin terautentikasi sebelum membuka akses pengelolaan data.
+
 ## Struktur Tabel Supabase (jika ingin mengaktifkan CRUD penuh)
 
 Buat tabel bernama `showcase_products` dengan kolom berikut:
@@ -63,6 +90,8 @@ Buat tabel bernama `showcase_products` dengan kolom berikut:
 | description       | text        |
 | specs             | text        |
 | process           | text        |
+| documentation     | jsonb       |
+| infographic       | jsonb       |
 | created_at        | timestamptz (default now()) |
 
 Buat tabel bernama `showcase_reviews` dengan kolom berikut:
@@ -83,7 +112,7 @@ Atau gunakan skrip SQL di `supabase-schema.sql` untuk membuat kedua tabel secara
 ## Login Admin
 
 - Klik tombol **Admin** di navigasi.
-- Kata sandi default: `pkwu2026` (ubah di `src/App.jsx`, konstanta `ADMIN_PASSWORD`).
+- Kata sandi demo saat ini ditulis langsung di `src/App.jsx` pada konstanta `ADMIN_PASSWORD`. Nilai ini dapat dilihat siapa pun dari kode/bundle dan bukan perlindungan akses yang aman; jangan gunakan panel ini untuk mengamankan operasi pada data publik.
 
 ## Kontak WhatsApp
 

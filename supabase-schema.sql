@@ -12,6 +12,11 @@ CREATE TABLE IF NOT EXISTS showcase_products (
   created_at timestamptz DEFAULT now()
 );
 
+-- Add image galleries to existing installations as well as new tables.
+ALTER TABLE showcase_products
+  ADD COLUMN IF NOT EXISTS documentation jsonb DEFAULT '[]'::jsonb,
+  ADD COLUMN IF NOT EXISTS infographic jsonb DEFAULT '[]'::jsonb;
+
 -- Create reviews table
 CREATE TABLE IF NOT EXISTS showcase_reviews (
   id text PRIMARY KEY,
