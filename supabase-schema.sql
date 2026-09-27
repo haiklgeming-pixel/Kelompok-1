@@ -29,9 +29,28 @@ CREATE TABLE IF NOT EXISTS showcase_reviews (
   created_at timestamptz DEFAULT now()
 );
 
+-- Store the shared documentation gallery separately from browser local storage.
+CREATE TABLE IF NOT EXISTS showcase_documentation (
+  id text PRIMARY KEY,
+  images jsonb NOT NULL DEFAULT '[]'::jsonb
+);
+
 -- Allow the public showcase admin panel to manage rows with the anon key.
 ALTER TABLE showcase_products ENABLE ROW LEVEL SECURITY;
 ALTER TABLE showcase_reviews ENABLE ROW LEVEL SECURITY;
+ALTER TABLE showcase_documentation ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Public can read documentation" ON showcase_documentation;
+CREATE POLICY "Public can read documentation"
+  ON showcase_documentation FOR SELECT TO anon USING (true);
+
+DROP POLICY IF EXISTS "Public can insert documentation" ON showcase_documentation;
+CREATE POLICY "Public can insert documentation"
+  ON showcase_documentation FOR INSERT TO anon WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Public can update documentation" ON showcase_documentation;
+CREATE POLICY "Public can update documentation"
+  ON showcase_documentation FOR UPDATE TO anon USING (true) WITH CHECK (true);
 
 DROP POLICY IF EXISTS "Public can read products" ON showcase_products;
 CREATE POLICY "Public can read products"

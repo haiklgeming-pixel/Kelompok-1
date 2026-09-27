@@ -55,10 +55,12 @@ kriya-nusantara-pkwu/
 1. Buat project di [Supabase](https://supabase.com/) dan tunggu sampai project siap.
 2. Buka **Project Settings > API** (atau **Connect**) lalu salin Project URL dan publishable/anon key.
 3. Buka **SQL Editor**, tempel seluruh isi `supabase-schema.sql`, lalu jalankan.
-4. Pastikan tabel `showcase_products` dan `showcase_reviews` tersedia, dan Storage memiliki bucket publik bernama `product-images`. Skrip SQL membuat tabel, bucket, serta policy yang dibutuhkan aplikasi.
+4. Pastikan tabel `showcase_products`, `showcase_reviews`, dan `showcase_documentation` tersedia, dan Storage memiliki bucket publik bernama `product-images`. Skrip SQL membuat tabel, bucket, serta policy yang dibutuhkan aplikasi.
 5. Untuk pengembangan lokal, salin `.env.example` ke `.env`, lalu isi `VITE_SUPABASE_URL` dan `VITE_SUPABASE_ANON_KEY` dengan nilai project tadi. Jangan masukkan `service_role` key ke file `.env` frontend.
 
 Skema mencakup kolom galeri `documentation` dan `infographic` bertipe `jsonb`. Jika project Supabase sudah memiliki tabel lama, jalankan skrip yang sama untuk menambahkan kolom yang belum ada.
+
+Foto pada section dokumentasi disimpan sebagai daftar URL di tabel `showcase_documentation`, sedangkan file fotonya disimpan di bucket Storage. Menjalankan `supabase-schema.sql` yang terbaru akan membuat tabel dan policy ini; foto lama di `localStorage` browser akan dicoba dipindahkan saat aplikasi berikutnya terhubung ke Supabase.
 
 ## Deploy ke Netlify
 

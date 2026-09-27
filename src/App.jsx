@@ -49,6 +49,8 @@ try {
 
 const PRODUCTS_TABLE = "showcase_products";
 const REVIEWS_TABLE = "showcase_reviews";
+const DOCUMENTATION_TABLE = "showcase_documentation";
+const DOCUMENTATION_ROW_ID = "main";
 const MAX_IMAGE_SIZE_BYTES = 2 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
@@ -1882,9 +1884,17 @@ function AdminPanel({ products, setProducts, reviews, setReviews, documentationD
         const uploadedUrl = await uploadAsset(item.file, "documentation-section");
         uploadedUrls.push(uploadedUrl);
       }
+      const images = [
+        ...(Array.isArray(documentationData.images) ? documentationData.images : []),
+        ...uploadedUrls,
+      ];
+      const { error } = await supabase
+        .from(DOCUMENTATION_TABLE)
+        .upsert({ id: DOCUMENTATION_ROW_ID, images });
+      if (error) throw error;
       setDocumentationData((prev) => ({
         ...prev,
-        images: [...(Array.isArray(prev.images) ? prev.images : []), ...uploadedUrls],
+        images,
       }));
       documentationSectionUploads.forEach((item) => {
         if (item.previewUrl?.startsWith("blob:")) URL.revokeObjectURL(item.previewUrl);
@@ -1899,6 +1909,21 @@ function AdminPanel({ products, setProducts, reviews, setReviews, documentationD
     } finally {
       setIsUploadingImage(false);
     }
+  };
+
+  const handleDeleteDocumentationImage = async (index) => {
+    const images = (documentationData.images || []).filter((_, imageIndex) => imageIndex !== index);
+    if (supabase) {
+      const { error } = await supabase
+        .from(DOCUMENTATION_TABLE)
+        .upsert({ id: DOCUMENTATION_ROW_ID, images });
+      if (error) {
+        setStatusMessage("Gagal menyimpan perubahan foto dokumentasi. " + error.message);
+        return;
+      }
+    }
+    setDocumentationData((prev) => ({ ...prev, images }));
+    setStatusMessage("Foto dokumentasi berhasil dihapus.");
   };
 
   const handleSubmit = async (e) => {
@@ -2312,10 +2337,7 @@ function AdminPanel({ products, setProducts, reviews, setReviews, documentationD
                     <img src={src} alt={`Dokumentasi section ${index + 1}`} className="h-32 w-full object-cover" />
                     <button
                       type="button"
-                      onClick={() => setDocumentationData((prev) => ({
-                        ...prev,
-                        images: (prev.images || []).filter((_, idx) => idx !== index),
-                      }))}
+                      onClick={() => handleDeleteDocumentationImage(index)}
                       className="absolute right-3 top-3 rounded-full bg-white/90 p-2 text-red-600 transition hover:bg-white"
                     >
                       <X size={14} />
@@ -2656,8 +2678,39 @@ function AppContent() {
       }
     }
 
+    async function loadDocumentationFromSupabase() {
+      if (!supabase) return;
+      try {
+        const { data, error } = await supabase
+          .from(DOCUMENTATION_TABLE)
+          .select("images")
+          .eq("id", DOCUMENTATION_ROW_ID)
+          .maybeSingle();
+
+        if (error) throw error;
+        if (data && Array.isArray(data.images)) {
+          if (isMounted) setDocumentationData({ images: data.images.filter(Boolean) });
+          return;
+        }
+
+        const legacyImages = Array.isArray(documentationData.images)
+          ? documentationData.images.filter(Boolean)
+          : [];
+        if (legacyImages.length > 0) {
+          const { error: migrationError } = await supabase
+            .from(DOCUMENTATION_TABLE)
+            .upsert({ id: DOCUMENTATION_ROW_ID, images: legacyImages });
+          if (migrationError) throw migrationError;
+          if (isMounted) setDocumentationData({ images: legacyImages });
+        }
+      } catch (err) {
+        console.warn("Gagal memuat foto dokumentasi dari Supabase", err);
+      }
+    }
+
     loadFromSupabase();
     loadReviewsFromSupabase();
+    loadDocumentationFromSupabase();
     return () => {
       isMounted = false;
     };
