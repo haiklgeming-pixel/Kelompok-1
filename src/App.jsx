@@ -58,8 +58,8 @@ const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif
    2. PROFIL KELOMPOK / IDENTITAS SEKOLAH
    ========================================================================= */
 const GROUP_PROFILE = {
-  name: "Hihiw",
-  fullName: "Hihiw PKWU",
+  name: "ORIGINERS",
+  fullName: "KELOMPOK 1 PKWU",
   tagline: "Merajut Kreativitas, Menenun Kewirausahaan",
   school: "SMA Negeri 12 Jakarta",
   className: "XII CLASSIX",
@@ -83,7 +83,7 @@ const ADMIN_PASSWORD = "Haikal122";
    ========================================================================= */
 const CATEGORIES = [
   "Semua",
-  "Tanaman Herbal",
+  "Fusion Food Nusantara",
   "Soon",
   "Soon",
   "Soon",
@@ -93,7 +93,7 @@ const initialProducts = [
   {
     id: "prod-001",
     name: "Tas Anyam Pandan \"Selaras\"",
-    category: "Tanaman Herbal",
+    category: "",
     image:
       "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=900&q=80",
     description:
@@ -190,42 +190,42 @@ const members = [
     id: "mem-01",
     name: "Haikal",
     role: "Role",
-    photo: "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785775334293-WhatsApp-Image-2026-08-03-at-23.41.05.jpeg",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://kall-portfolioi.vercel.app/",
   },
   {
     id: "mem-02",
     name: "Wapa",
     role: "Role",
-    photo: "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785764553634-WhatsApp-Image-2026-08-03-at-15.22.37.jpeg",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790521815400-WhatsApp-Image-2026-09-27-at-22.08.48-1.jpeg",
     personalWebsite: "https://biodata-wafa.vercel.app/",
   },
   {
     id: "mem-03",
-    name: "Diah",
+    name: "Lita",
     role: "Role",
-    photo: "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785799787354-WhatsApp-Image-2026-08-04-at-06.21.12.jpeg",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://biodata-diah.vercel.app/",
   },
   {
     id: "mem-04",
     name: "Rian",
     role: "Role",
-    photo: "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785827522984-WhatsApp-Image-2026-08-04-at-14.11.21.jpeg",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790521784128-WhatsApp-Image-2026-09-27-at-22.08.48.jpeg",
     personalWebsite: "https://mpihlupi.carrd.co/#",
   },
   {
     id: "mem-05",
-    name: "Nabila",
+    name: "Angela",
     role: "Role",
-    photo: "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785773110061-WhatsApp-Image-2026-08-03-at-20.11.40.jpeg",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://biodata-nabila.vercel.app/",
   },
   {
     id: "mem-06",
-    name: "Arsat",
+    name: "Ilham",
     role: "Role",
-    photo: "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785747464015-WhatsApp-Image-2026-08-02-at-13.13.59.jpeg",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://biodata-siswa-rose.vercel.app/",
   },
 ];
@@ -516,7 +516,7 @@ function Hero({ onNavigate, productCount }) {
         <div className="relative w-full max-w-md flex-1">
           <div className="overflow-hidden rounded-[2rem] border-4 border-white shadow-xl shadow-emerald-900/10">
             <img
-              src="https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785775625782-WhatsApp-Image-2026-07-31-at-17.38.55.jpeg"
+              src="https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790521457071-WhatsApp-Image-2026-09-26-at-08.37.18.jpeg"
               alt={"Etalase Produk kerajinan tangan " + GROUP_PROFILE.name}
               className="h-80 w-full object-cover sm:h-96"
             />
@@ -546,7 +546,7 @@ function ProductCard({ product, onOpenDetail }) {
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           onError={(e) => {
             e.currentTarget.src =
-              "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785775625782-WhatsApp-Image-2026-07-31-at-17.38.55.jpeg";
+              "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790521457071-WhatsApp-Image-2026-09-26-at-08.37.18.jpeg";
           }}
         />
         <div className="absolute left-3 top-3">
