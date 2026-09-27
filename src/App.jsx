@@ -81,7 +81,7 @@ const ADMIN_PASSWORD = "Haikal122";
    ========================================================================= */
 const CATEGORIES = [
   "Semua",
-  "FUSION FOOD NUSANTARA",
+  "Fusion Food Nusantara",
   "Soon",
   "Soon",
   "Soon",
