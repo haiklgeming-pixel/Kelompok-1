@@ -188,7 +188,7 @@ const members = [
     id: "mem-01",
     name: "Haikal",
     role: "Role",
-    photo: "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785775334293-WhatsApp-Image-2026-08-03-at-23.41.05.jpeg",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://kall-portfolioi.vercel.app/",
   },
   {
