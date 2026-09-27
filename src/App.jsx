@@ -228,6 +228,27 @@ const members = [
     photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://biodata-siswa-rose.vercel.app/",
   },
+  {
+    id: "mem-07",
+    name: "Anggota 7",
+    role: "Anggota Kelompok",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
+    personalWebsite: "https://kall-portfolioi.vercel.app/",
+  },
+  {
+    id: "mem-08",
+    name: "Anggota 8",
+    role: "Anggota Kelompok",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
+    personalWebsite: "https://kall-portfolioi.vercel.app/",
+  },
+  {
+    id: "mem-09",
+    name: "Anggota 9",
+    role: "Anggota Kelompok",
+    photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
+    personalWebsite: "https://kall-portfolioi.vercel.app/",
+  },
 ];
 
 const NAV_ITEMS = [
