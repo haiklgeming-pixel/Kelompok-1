@@ -231,13 +231,13 @@ const members = [
   {
     id: "mem-07",
     name: "Gisel",
-    role: "Anggota Kelompok",
+    role: "Role",
     photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://kall-portfolioi.vercel.app/",
   },
   {
     id: "mem-08",
-    name: "Evan",
+    name: "Role",
     role: "Anggota Kelompok",
     photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://kall-portfolioi.vercel.app/",
@@ -245,7 +245,7 @@ const members = [
   {
     id: "mem-09",
     name: "Rachma",
-    role: "Anggota Kelompok",
+    role: "Role",
     photo: "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790520376945-WhatsApp-Image-2026-09-27-at-21.45.42.jpeg",
     personalWebsite: "https://kall-portfolioi.vercel.app/",
   },
