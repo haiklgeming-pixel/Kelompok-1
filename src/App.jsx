@@ -2680,6 +2680,8 @@ function AppContent() {
 
     async function loadDocumentationFromSupabase() {
       if (!supabase) return;
+
+      let images = [];
       try {
         const { data, error } = await supabase
           .from(DOCUMENTATION_TABLE)
@@ -2689,23 +2691,49 @@ function AppContent() {
 
         if (error) throw error;
         if (data && Array.isArray(data.images)) {
-          if (isMounted) setDocumentationData({ images: data.images.filter(Boolean) });
-          return;
+          images = data.images.filter(Boolean);
+        }
+      } catch (err) {
+        console.warn("Gagal membaca daftar foto dokumentasi dari Supabase", err);
+      }
+
+      if (images.length === 0) {
+        try {
+          const { data: files, error } = await supabase.storage
+            .from("product-images")
+            .list("documentation-section", {
+              limit: 1000,
+              sortBy: { column: "created_at", order: "asc" },
+            });
+          if (error) throw error;
+          images = (files || [])
+            .filter((file) => file.id && file.name)
+            .map((file) => {
+              const path = `documentation-section/${file.name}`;
+              return supabase.storage.from("product-images").getPublicUrl(path).data.publicUrl;
+            });
+        } catch (err) {
+          console.warn("Gagal mencari file lama di Supabase Storage", err);
         }
 
         const legacyImages = Array.isArray(documentationData.images)
           ? documentationData.images.filter(Boolean)
           : [];
-        if (legacyImages.length > 0) {
-          const { error: migrationError } = await supabase
-            .from(DOCUMENTATION_TABLE)
-            .upsert({ id: DOCUMENTATION_ROW_ID, images: legacyImages });
-          if (migrationError) throw migrationError;
-          if (isMounted) setDocumentationData({ images: legacyImages });
+        images = [...new Set([...images, ...legacyImages])];
+
+        if (images.length > 0) {
+          try {
+            const { error: migrationError } = await supabase
+              .from(DOCUMENTATION_TABLE)
+              .upsert({ id: DOCUMENTATION_ROW_ID, images });
+            if (migrationError) throw migrationError;
+          } catch (err) {
+            console.warn("Foto ditemukan, tetapi daftar gagal disimpan ke Supabase", err);
+          }
         }
-      } catch (err) {
-        console.warn("Gagal memuat foto dokumentasi dari Supabase", err);
       }
+
+      if (isMounted && images.length > 0) setDocumentationData({ images });
     }
 
     loadFromSupabase();
