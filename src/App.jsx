@@ -56,8 +56,8 @@ const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif
    2. PROFIL KELOMPOK / IDENTITAS SEKOLAH
    ========================================================================= */
 const GROUP_PROFILE = {
-  name: "Hihiw",
-  fullName: "Hihiw PKWU",
+  name: "ORIGINERS",
+  fullName: "KELOMPOK 1 PKWU",
   tagline: "Merajut Kreativitas, Menenun Kewirausahaan",
   school: "SMA Negeri 12 Jakarta",
   className: "XII CLASSIX",
@@ -81,7 +81,7 @@ const ADMIN_PASSWORD = "Haikal122";
    ========================================================================= */
 const CATEGORIES = [
   "Semua",
-  "Tanaman Herbal",
+  "FUSION FOOD NUSANTARA",
   "Soon",
   "Soon",
   "Soon",
@@ -91,7 +91,7 @@ const initialProducts = [
   {
     id: "prod-001",
     name: "Tas Anyam Pandan \"Selaras\"",
-    category: "Tanaman Herbal",
+    category: "",
     image:
       "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=900&q=80",
     description:
@@ -514,7 +514,7 @@ function Hero({ onNavigate, productCount }) {
         <div className="relative w-full max-w-md flex-1">
           <div className="overflow-hidden rounded-[2rem] border-4 border-white shadow-xl shadow-emerald-900/10">
             <img
-              src="https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785775625782-WhatsApp-Image-2026-07-31-at-17.38.55.jpeg"
+              src="https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790519938089-WhatsApp-Image-2026-09-21-at-16.38.16.jpeg"
               alt={"Etalase Produk kerajinan tangan " + GROUP_PROFILE.name}
               className="h-80 w-full object-cover sm:h-96"
             />
@@ -544,7 +544,7 @@ function ProductCard({ product, onOpenDetail }) {
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           onError={(e) => {
             e.currentTarget.src =
-              "https://lqvjphmbebbcdquovkap.supabase.co/storage/v1/object/public/product-images/products/1785775625782-WhatsApp-Image-2026-07-31-at-17.38.55.jpeg";
+              "https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790519938089-WhatsApp-Image-2026-09-21-at-16.38.16.jpeg";
           }}
         />
         <div className="absolute left-3 top-3">
