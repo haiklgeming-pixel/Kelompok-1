@@ -296,7 +296,7 @@ function useAdmin() {
    ========================================================================= */
 function SectionEyebrow({ children }) {
   return (
-    <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1">
+    <span className="inline-flex items-center gap-2 rounded-full border border-[#f4d883] bg-[#fff8dd] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#7a5515] shadow-sm shadow-[#f2d07d]/30">
       <Folder size={13} />
       {children}
     </span>
@@ -314,7 +314,7 @@ function normalizeImageList(value) {
 
 function CategoryBadge({ children }) {
   return (
-    <span className="inline-block text-[11px] font-semibold uppercase tracking-wide bg-amber-100 text-amber-800 border border-amber-200 rounded-full px-3 py-1">
+    <span className="inline-block rounded-full border border-amber-200 bg-amber-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-800">
       {children}
     </span>
   );
@@ -326,7 +326,7 @@ function PrimaryButton({ children, onClick, className = "", type = "button" }) {
       type={type}
       onClick={onClick}
       className={
-        "inline-flex items-center justify-center gap-2 rounded-full bg-emerald-700 px-6 py-3 text-sm font-semibold text-white shadow-sm shadow-emerald-900/10 transition hover:bg-emerald-800 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 " +
+        "inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#f5d67a] to-[#d9a633] px-6 py-3 text-sm font-bold text-[#4a2d0f] shadow-[0_12px_30px_rgba(201,151,42,0.28)] transition duration-200 hover:brightness-105 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d9a633] focus-visible:ring-offset-2 " +
         className
       }
     >
@@ -341,7 +341,7 @@ function SecondaryButton({ children, onClick, className = "", type = "button" })
       type={type}
       onClick={onClick}
       className={
-        "inline-flex items-center justify-center gap-2 rounded-full border border-emerald-700 px-6 py-3 text-sm font-semibold text-emerald-800 transition hover:bg-emerald-50 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 " +
+        "inline-flex items-center justify-center gap-2 rounded-full border border-[#e9c96d] bg-[#fffaf0] px-6 py-3 text-sm font-semibold text-[#6e4a12] transition hover:bg-[#fff3d0] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d9a633] focus-visible:ring-offset-2 " +
         className
       }
     >
@@ -363,23 +363,23 @@ function Header({ activeSection, onNavigate, onOpenAdminLogin }) {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-emerald-900/5 bg-[#FBFAF6]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-[#f0d67d]/70 bg-[#fffdf8]/90 backdrop-blur-md shadow-[0_8px_24px_rgba(133,98,20,0.06)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
         <button
           onClick={() => handleNav("beranda")}
           className="flex items-center gap-3 text-left"
         >
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-700 text-white shadow-sm">
+          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#f6d777] to-[#d49f2d] text-[#4b2a10] shadow-md shadow-[#d9a633]/25">
             <Sparkles size={20} />
           </span>
           <span className="leading-tight">
             <span
-              className="block text-lg font-bold text-emerald-950"
+              className="block text-lg font-bold text-[#3d2c17]"
               style={{ fontFamily: "'Fraunces', 'Georgia', serif" }}
             >
               {GROUP_PROFILE.name}
             </span>
-            <span className="block text-[11px] uppercase tracking-[0.18em] text-emerald-700">
+            <span className="block text-[11px] uppercase tracking-[0.18em] text-[#8d651a]">
               Showcase Produk PKWU
             </span>
           </span>
@@ -393,8 +393,8 @@ function Header({ activeSection, onNavigate, onOpenAdminLogin }) {
               className={
                 "rounded-full px-4 py-2 text-sm font-medium transition " +
                 (activeSection === item.id
-                  ? "bg-emerald-700 text-white"
-                  : "text-emerald-950 hover:bg-emerald-50")
+                  ? "bg-gradient-to-r from-[#f5d67a] to-[#d8a52d] text-[#4a2d0f] shadow-sm"
+                  : "text-[#4a3827] hover:bg-[#fff5d9]")
               }
             >
               {item.label}
@@ -484,17 +484,17 @@ function Hero({ onNavigate, productCount }) {
   return (
     <section
       id="beranda"
-      className="relative overflow-hidden bg-gradient-to-b from-emerald-50 via-[#FBFAF6] to-[#FBFAF6]"
+      className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(247,219,131,0.38),transparent_25%),linear-gradient(180deg,_#fffdf7_0%,_#fffbef_35%,_#fffaf0_100%)]"
     >
-      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-200/40 blur-3xl" />
-      <div className="absolute -left-20 top-40 h-72 w-72 rounded-full bg-emerald-200/50 blur-3xl" />
+      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#f6d88a]/40 blur-3xl" />
+      <div className="absolute -left-20 top-40 h-72 w-72 rounded-full bg-[#f3de9d]/50 blur-3xl" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col-reverse items-center gap-12 px-5 py-16 sm:px-8 lg:flex-row lg:py-24">
         <div className="flex-1 text-center lg:text-left">
           <SectionEyebrow>{GROUP_PROFILE.subject}</SectionEyebrow>
 
           <h1
-            className="mt-6 text-4xl font-bold leading-[1.1] text-emerald-950 sm:text-5xl lg:text-6xl"
+            className="mt-6 text-4xl font-bold leading-[1.1] text-[#2f210e] sm:text-5xl lg:text-6xl"
             style={{ fontFamily: "'Fraunces', 'Georgia', serif" }}
           >
             {GROUP_PROFILE.tagline}
@@ -524,9 +524,9 @@ function Hero({ onNavigate, productCount }) {
               return (
                 <span
                   key={badge.label}
-                  className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-xs font-semibold text-emerald-800 shadow-sm"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#f2d77d] bg-[#fffaf0] px-4 py-2 text-xs font-semibold text-[#714f1a] shadow-sm shadow-[#f2d07d]/25"
                 >
-                  <Icon size={14} className="text-emerald-600" />
+                  <Icon size={14} className="text-[#a36a1a]" />
                   {badge.label}
                 </span>
               );
@@ -535,15 +535,15 @@ function Hero({ onNavigate, productCount }) {
         </div>
 
         <div className="relative w-full max-w-md flex-1">
-          <div className="overflow-hidden rounded-[2rem] border-4 border-white shadow-xl shadow-emerald-900/10">
+          <div className="overflow-hidden rounded-[2rem] border-4 border-[#fffaf0] shadow-[0_25px_60px_rgba(129,92,15,0.18)]">
             <img
               src="https://poefwswblrjmhvfvtiiu.supabase.co/storage/v1/object/public/product-images/products/1790521457071-WhatsApp-Image-2026-09-26-at-08.37.18.jpeg"
               alt={"Etalase Produk kerajinan tangan " + GROUP_PROFILE.name}
               className="h-80 w-full object-cover sm:h-96"
             />
           </div>
-          <div className="absolute -bottom-6 -left-6 hidden rounded-2xl border border-emerald-100 bg-white px-5 py-4 shadow-lg sm:block">
-            <p className="text-2xl font-bold text-emerald-800" style={{ fontFamily: "'Fraunces', serif" }}>
+          <div className="absolute -bottom-6 -left-6 hidden rounded-2xl border border-[#f5dd96] bg-[#fffaf0] px-5 py-4 shadow-lg shadow-[#d9a633]/20 sm:block">
+            <p className="text-2xl font-bold text-[#7b5214]" style={{ fontFamily: "'Fraunces', serif" }}>
               {productCount}+
             </p>
             <p className="text-xs font-medium text-stone-500">Produk dipamerkan</p>
@@ -559,7 +559,7 @@ function Hero({ onNavigate, productCount }) {
    ========================================================================= */
 function ProductCard({ product, onOpenDetail }) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-[#f4df9e] bg-white shadow-[0_10px_25px_rgba(124,93,32,0.08)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_30px_rgba(124,93,32,0.12)]">
       <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
         <img
           src={product.image}
@@ -820,7 +820,7 @@ function CatalogSection({ products, onOpenDetail }) {
   }, [products, activeCategory, query]);
 
   return (
-    <section id="katalog" className="bg-[#FBFAF6] py-16 sm:py-24">
+    <section id="katalog" className="bg-[#fff1bf] py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Katalog Produk</SectionEyebrow>
@@ -931,7 +931,7 @@ function ReviewsSection({ reviews, onAddReview }) {
   };
 
   return (
-    <section id="ulasan" className="bg-white py-16 sm:py-24">
+    <section id="ulasan" className="bg-[#fff8df] py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Ulasan</SectionEyebrow>
@@ -1063,20 +1063,20 @@ function ReviewsSection({ reviews, onAddReview }) {
 
 function MembersSection() {
   return (
-    <section id="anggota" className="bg-emerald-950 py-16 text-white sm:py-24">
+    <section id="anggota" className="bg-[#171717] py-16 text-[#f7f7f2] sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-700 bg-emerald-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#4a4a45] bg-[#2b2b28] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#f5d67a] shadow-sm shadow-black/30">
             <User size={13} />
             Anggota Kelompok
           </span>
           <h2
-            className="mt-4 text-3xl font-bold sm:text-4xl"
+            className="mt-4 text-3xl font-bold text-[#fffdf5] sm:text-4xl"
             style={{ fontFamily: "'Fraunces', serif" }}
           >
             Wajah &amp; Web Personal di Balik Setiap Produk
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-emerald-100/80 sm:text-base">
+          <p className="mt-3 text-sm leading-relaxed text-[#d6d6cf] sm:text-base">
             Setiap anggota mengelola website personal masing-masing sebagai
             portofolio individu. Klik tombol di bawah untuk menjelajahinya.
           </p>
@@ -1086,28 +1086,28 @@ function MembersSection() {
           {members.map((member) => (
             <div
               key={member.id}
-              className="flex flex-col items-center rounded-2xl border border-emerald-800 bg-emerald-900/60 p-6 text-center transition hover:border-emerald-600"
+              className="flex flex-col items-center rounded-2xl border border-[#454541] bg-[#f8f8f3] p-6 text-center shadow-[0_12px_28px_rgba(0,0,0,0.22)] transition hover:-translate-y-1 hover:border-[#c99a3d] hover:shadow-[0_18px_32px_rgba(0,0,0,0.35)]"
             >
               <img
                 src={member.photo}
                 alt={member.name}
-                className="h-20 w-20 rounded-full border-4 border-emerald-700 object-cover"
+                className="h-20 w-20 rounded-full border-4 border-[#d9a633] object-cover shadow-md shadow-black/20"
                 onError={(e) => {
                   e.currentTarget.src =
                     "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&q=80";
                 }}
               />
-              <h3 className="mt-4 text-lg font-bold" style={{ fontFamily: "'Fraunces', serif" }}>
+              <h3 className="mt-4 text-lg font-bold text-[#20201e]" style={{ fontFamily: "'Fraunces', serif" }}>
                 {member.name}
               </h3>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-amber-300">
+              <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[#686861]">
                 {member.role}
               </p>
               <a
                 href={member.personalWebsite}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-emerald-900 transition hover:bg-emerald-100"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#252522] px-4 py-2 text-xs font-semibold text-[#fff6d9] transition hover:bg-[#3b3b36]"
               >
                 <Globe size={14} />
                 Buka Website Personal
@@ -1116,9 +1116,9 @@ function MembersSection() {
           ))}
         </div>
 
-        <div className="mx-auto mt-14 max-w-3xl rounded-2xl border border-emerald-800 bg-emerald-900/60 p-6 text-center sm:p-8">
-          <GraduationCap className="mx-auto mb-3 text-amber-300" size={26} />
-          <p className="text-sm text-emerald-100/90 sm:text-base">
+          <div className="mx-auto mt-14 max-w-3xl rounded-2xl border border-[#4a4a45] bg-[#242421] p-6 text-center shadow-[0_10px_24px_rgba(0,0,0,0.25)] sm:p-8">
+          <GraduationCap className="mx-auto mb-3 text-[#f0c95f]" size={26} />
+          <p className="text-sm text-[#e4e4dc] sm:text-base">
             {GROUP_PROFILE.fullName} merupakan proyek kewirausahaan mata pelajaran{" "}
             {GROUP_PROFILE.subject} kelas <strong>{GROUP_PROFILE.className}</strong>,{" "}
             {GROUP_PROFILE.school}, tahun ajaran{" "}
@@ -1147,7 +1147,7 @@ function DocumentationSection({ documentationData }) {
   const goNext = () => setGalleryIndex((prev) => (prev >= images.length - 1 ? 0 : prev + 1));
 
   return (
-    <section id="dokumentasi" className="bg-[#FBFAF6] py-16 sm:py-24">
+    <section id="dokumentasi" className="bg-[#fff4cf] py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Dokumentasi</SectionEyebrow>
@@ -1280,7 +1280,7 @@ function ContactSection() {
   };
 
   return (
-    <section id="kontak" className="bg-[#FBFAF6] py-16 sm:py-24">
+    <section id="kontak" className="bg-[#ffefbd] py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Kontak &amp; Kerjasama</SectionEyebrow>
@@ -1353,8 +1353,8 @@ function ContactSection() {
           </div>
 
           <div className="flex flex-col gap-4 lg:col-span-2">
-            <div className="rounded-3xl border border-emerald-100 bg-emerald-50/60 p-6">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
+            <div className="rounded-3xl border border-[#f1d68a] bg-[#fffaf0] p-6 shadow-sm shadow-[#f0d17d]/30">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-[#7d5518]">
                 Informasi Kelompok
               </h3>
               <ul className="mt-4 space-y-4 text-sm text-stone-600">
@@ -2579,7 +2579,7 @@ function AdminPanel({ products, setProducts, reviews, setReviews, documentationD
    ========================================================================= */
 function Footer() {
   return (
-    <footer className="border-t border-stone-200 bg-white py-10">
+    <footer className="border-t border-[#f0d67d] bg-[#fff1bf] py-10">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-5 text-center sm:px-8">
         <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-700 text-white">
           <Sparkles size={18} />

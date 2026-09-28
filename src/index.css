@@ -1,6 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --butter-50: #fffdf8;
+  --butter-100: #fff7e2;
+  --butter-200: #fceab7;
+  --butter-300: #f5dc8c;
+  --butter-400: #efca68;
+  --butter-500: #e1b65b;
+  --butter-600: #c99a3d;
+  --butter-700: #a97d2d;
+  --butter-800: #7b5a21;
+  --butter-900: #4d381e;
+  --butter-950: #2d221b;
+}
 
 html {
   scroll-behavior: smooth;
@@ -8,6 +24,133 @@ html {
 
 body {
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(243, 214, 135, 0.35), transparent 28%),
+    linear-gradient(180deg, #fffefc 0%, #fff9ee 34%, #fff4cf 100%);
+  color: #362d25;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.03em;
+}
+
+p,
+span,
+button,
+input,
+textarea,
+label {
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: rgba(201, 106, 76, 0.24);
+  color: #3d1d17;
+}
+
+.bg-emerald-50,
+.hover\:bg-emerald-50:hover {
+  background-color: var(--butter-50) !important;
+}
+
+.bg-emerald-100,
+.hover\:bg-emerald-100:hover {
+  background-color: var(--butter-100) !important;
+}
+
+.bg-emerald-200 {
+  background-color: var(--butter-200) !important;
+}
+
+.bg-emerald-700,
+.hover\:bg-emerald-700:hover {
+  background: linear-gradient(135deg, #f5d67a 0%, #d9a633 100%) !important;
+  color: #4a2d0f !important;
+}
+
+.bg-emerald-800 {
+  background-color: var(--butter-700) !important;
+}
+
+.bg-emerald-900 {
+  background-color: rgba(123, 90, 33, 0.9) !important;
+}
+
+.bg-emerald-950 {
+  background: linear-gradient(135deg, #3d2c17 0%, #6e4a12 100%) !important;
+}
+
+.text-emerald-600 {
+  color: var(--butter-600) !important;
+}
+
+.text-emerald-700 {
+  color: var(--butter-700) !important;
+}
+
+.text-emerald-800 {
+  color: var(--butter-800) !important;
+}
+
+.text-emerald-900 {
+  color: var(--butter-900) !important;
+}
+
+.text-emerald-950 {
+  color: var(--butter-950) !important;
+}
+
+.border-emerald-100 {
+  border-color: rgba(222, 130, 93, 0.5) !important;
+}
+
+.border-emerald-200,
+.hover\:border-emerald-300:hover {
+  border-color: rgba(222, 130, 93, 0.7) !important;
+}
+
+.border-emerald-300 {
+  border-color: rgba(201, 106, 76, 0.8) !important;
+}
+
+.border-emerald-500,
+.focus\:border-emerald-500:focus,
+.hover\:border-emerald-500:hover {
+  border-color: rgba(168, 79, 58, 0.9) !important;
+}
+
+.border-emerald-700 {
+  border-color: rgba(130, 60, 43, 0.8) !important;
+}
+
+.border-emerald-800 {
+  border-color: rgba(93, 42, 32, 0.7) !important;
+}
+
+.text-emerald-100 {
+  color: #fceee9 !important;
+}
+
+.text-emerald-200 {
+  color: #f7d4c5 !important;
+}
+
+.focus-visible\:ring-emerald-600:focus-visible {
+  --tw-ring-color: rgba(168, 79, 58, 0.9) !important;
+}
+
+.focus\:ring-emerald-100:focus {
+  --tw-ring-color: rgba(247, 201, 184, 0.8) !important;
 }
 
 .line-clamp-3 {
